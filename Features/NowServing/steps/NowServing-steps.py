@@ -1,22 +1,30 @@
+from behave import given, when, then
+
+from Implementation import NowServing
+
+
 @given(u'Machine is off')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given Machine is off')
+    # bhive assert : status == off
+    # bhive needs to know about type off
+    context.machine.status = NowServing.NowServing.Status.off
 
 
 @when(u'Machine is started')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When Machine is started')
+    # bhive needs to know what?  is this just the name of a state change?
+    context.machine.start()
 
 
 @then(u'The next ticket should be 1')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then The next ticket should be 1')
+    # bhive needs to know what?  this is an assertion of the machine state
+    assert context.machine.take_ticket() == 1
 
 
 @then(u'The "Now Serving" display should be blank')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then The "Now Serving" display should be blank')
-
+    assert context.machine.display == ''
 
 @given(u'Machine is on')
 def step_impl(context):
