@@ -2,10 +2,18 @@ Feature: Ticketing
   As a business owner, I want to allow my employees to efficiently and effectively manage customers waiting to be served.
 
   Scenario: Start Machine
+  """
+    This is some text.
+    """
     Given Machine is off
+    """
+    running = FALSE
+    """
     When  Machine is started
-    Then  The next ticket should be 1
-    And   The "Now Serving" display should be blank
+    """
+    running := TRUE
+    """
+    Then  Machine is on
 
   Scenario: Customer Takes Ticket
     Given Machine is on
