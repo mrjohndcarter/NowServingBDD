@@ -8,16 +8,16 @@ CONSTANTS				closed_sentinel
 
 PROPERTIES				closed_sentinel : NAT & closed_sentinel = 0
 
-VARIABLES				current, next_ticket, serving
+VARIABLES				current, next_ticket, running, serving
 
-INVARIANT				current : NAT & next_ticket : NAT & serving : WICKET --> NAT
+INVARIANT				current : NAT & next_ticket : NAT & running : BOOL & serving : WICKET --> NAT
 
-INITIALISATION				current := 0 || next_ticket := 1 || serving := WICKET * {closed_sentinel}
+INITIALISATION				current := 0 || next_ticket := 1 || running := FALSE || serving := WICKET * {closed_sentinel}
 
 OPERATIONS
 
 Start_Machine = 
-PRE None
-THEN None
+PRE running = FALSE
+THEN running := TRUE
 END
 END
