@@ -1,5 +1,5 @@
 from b import machine, operation
-from environment import bhive_context
+from environment import bhive_context, state
 from utilities import bhive_logging
 
 
@@ -73,6 +73,8 @@ def after_feature(context, feature):
 def before_scenario(context, scenario):
     log_info('before_scenario: {}'.format(scenario.name))
 
+    context.state = state.State()
+
     machine_name = machine.Machine.get_machine_name_from_feature_filename(context.feature.filename)
     temp_machine = instance.context.get_machine_by_name(machine_name)
 
@@ -115,7 +117,7 @@ def before_scenario(context, scenario):
 
 def after_scenario(context, scenario):
     log_info('after_scenario: {}'.format(scenario.name))
-
+    print "State: " + str(context.state)
 
 def before_step(context, step):
     log_info('before_step: {}'.format(step.name))
@@ -128,9 +130,11 @@ def before_step(context, step):
     temp_operation = temp_machine.get_operation_by_name(operation_name)
 
     if step.step_type == 'given':
+        # TODO: interrogate state
         temp_operation.precondition = step.text
 
     if step.step_type == 'when':
+        # TODO: assignment of state
         temp_operation.assignment = step.text
 
     if step.step_type == 'then':

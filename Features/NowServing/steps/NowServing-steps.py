@@ -7,13 +7,20 @@ def step_impl(context):
     Comment text...
     """
     # context.machine.status = NowServing.NowServing.Status.off
-    pass
+    # IDEA: we declare a mock here, and add it to context.
+    # at the end, when the context is popped we can check all the state changes?
+    # context.state =
+    # context.state -> this maps to machine variables
+    #context.state['running'] =  # this becomes the precondition????
+    context.state.assertThat('running','=','FALSE')
 
 @when(u'Machine is started')
 def step_impl(context):
     # bhive needs to know what?  is this just the name of a state change?
     # context.machine.start()
-    pass
+    #pass
+    #context.state['b'] = 1 # this becomes the assignment???
+    context.state['running'] = 'TRUE'
 
 
 @then(u'Machine is on')
