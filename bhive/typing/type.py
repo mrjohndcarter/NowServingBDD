@@ -1,4 +1,3 @@
-
 class Type(object):
     def __init__(self, name, parse_function):
         # TODO: call up and register type
@@ -8,4 +7,3 @@ class Type(object):
         pass
 
 # TODO: define B types
-

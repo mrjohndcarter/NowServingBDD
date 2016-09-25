@@ -2,17 +2,8 @@ Feature: Ticketing
   As a business owner, I want to allow my employees to efficiently and effectively manage customers waiting to be served.
 
   Scenario: Start Machine
-  """
-    This is some text.
-    """
     Given Machine is off
-    """
-    running = FALSE
-    """
     When  Machine is started
-    """
-    running := TRUE
-    """
     Then  Machine is on
 
   Scenario: Customer Takes Ticket

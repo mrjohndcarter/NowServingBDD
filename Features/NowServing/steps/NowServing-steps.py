@@ -3,25 +3,14 @@ from behave import given, when, then
 
 @given(u'Machine is off')
 def step_impl(context):
-    """
-    Comment text...
-    """
-    # context.machine.status = NowServing.NowServing.Status.off
-    # IDEA: we declare a mock here, and add it to context.
-    # at the end, when the context is popped we can check all the state changes?
-    # context.state =
-    # context.state -> this maps to machine variables
-    #context.state['running'] =  # this becomes the precondition????
-    context.state.assertThat('running','=','FALSE')
+    # this is the precondition:
+    context.state.assert_that('running','=','FALSE')
+
 
 @when(u'Machine is started')
 def step_impl(context):
-    # bhive needs to know what?  is this just the name of a state change?
-    # context.machine.start()
-    #pass
-    #context.state['b'] = 1 # this becomes the assignment???
-    context.state['running'] = 'TRUE'
-
+    # this is the assignment state change
+    context.state.assign([('running', ':=', 'TRUE')])
 
 @then(u'Machine is on')
 def step_impl(context):
