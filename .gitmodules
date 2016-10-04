@@ -1,0 +1,3 @@
+[submodule "bhive"]
+	path = bhive
+	url = git@github-mrjohndcarter:mrjohndcarter/bhive.git
