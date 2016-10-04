@@ -1,10 +1,21 @@
 from behave import given, when, then
 
+from bhive.integration import log_info, declare_variable
+
 
 @given(u'Machine is off')
 def step_impl(context):
+    # define variable running of type BOOL
+    #context.state.define_variable('running', 'BOOL')
+
+    # TODO:
+    # - this needs to go up to the machine level
+    # - check the type
+    declare_variable(context, 'running', 'BOOL', 'FALSE')
     # this is the precondition:
     context.state.assert_that('running','=','FALSE')
+
+    log_info("Feature: {}".format(context.feature))
 
 
 @when(u'Machine is started')

@@ -5,6 +5,7 @@ Feature: Ticketing
     Given Machine is off
     When  Machine is started
     Then  Machine is on
+    #And   Display should show 1
 
   Scenario: Customer Takes Ticket
     Given Machine is on
