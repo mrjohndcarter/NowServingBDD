@@ -5,26 +5,24 @@ from bhive.integration import log_info, declare_variable
 
 @given(u'Machine is off')
 def step_impl(context):
-    # define variable running of type BOOL
-    #context.state.define_variable('running', 'BOOL')
-
-    # TODO:
-    # - this needs to go up to the machine level
-    # - check the type
     declare_variable(context, 'running', 'BOOL', 'FALSE')
-    # this is the precondition:
-    context.state.assert_that('running','=','FALSE')
-
-    log_info("Feature: {}".format(context.feature))
+    context.state.ensure_that('running','=','FALSE')
 
 
 @when(u'Machine is started')
 def step_impl(context):
     # this is the assignment state change
     context.state.assign([('running', ':=', 'TRUE')])
+    #context.state.assign([('display', ':=', '1')])
 
 @then(u'Machine is on')
 def step_impl(context):
+    #context.state.test_for('running', '=', 'TRUE')
+    pass
+
+@then(u'Display should show 1')
+def step_impl(context):
+    #context.state.test_for('display', '=', 1)
     pass
 
 # @then(u'The next ticket should be 1')
