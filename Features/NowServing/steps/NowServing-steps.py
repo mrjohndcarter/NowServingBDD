@@ -6,6 +6,7 @@ from bhive.integration import log_info, declare_variable
 @given(u'Machine is off')
 def step_impl(context):
     declare_variable(context, 'running', 'BOOL', 'FALSE')
+    declare_variable(context, 'display', 'INT', '0')
     context.state.ensure_that('running','=','FALSE')
 
 
@@ -13,16 +14,17 @@ def step_impl(context):
 def step_impl(context):
     # this is the assignment state change
     context.state.assign([('running', ':=', 'TRUE')])
-    #context.state.assign([('display', ':=', '1')])
+    context.state.assign([('display', ':=', '1')])
+
 
 @then(u'Machine is on')
 def step_impl(context):
-    #context.state.test_for('running', '=', 'TRUE')
+    context.state.test_that(context, 'running', '=', 'TRUE')
     pass
 
 @then(u'Display should show 1')
 def step_impl(context):
-    #context.state.test_for('display', '=', 1)
+    context.state.test_that(context, 'display', '=', 1)
     pass
 
 # @then(u'The next ticket should be 1')
