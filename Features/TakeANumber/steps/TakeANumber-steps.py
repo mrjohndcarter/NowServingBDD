@@ -2,26 +2,30 @@ from behave import given, when, then
 
 from bhive.integration import log_info, declare_variable
 
-
 @given(u'Machine is off')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Given Machine is off')
+    declare_variable(context, 'running', 'BOOL', 'FALSE')
+    declare_variable(context, 'display', 'INT', '0')
+    declare_variable(context, 'ticket', 'INT', '0')
+    context.state.ensure_that('running','=','FALSE')
 
 @when(u'Machine is started')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When Machine is started')
+    context.state.assign([('running', ':=', 'TRUE')])
+    context.state.assign([('display', ':=', '1')])
+    context.state.assign([('ticket', ':=', '1')])
 
 @then(u'Machine is on')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then Machine is on')
+    context.state.test_that(context, 'running', '=', 'TRUE')
 
 @then(u'Display shows 1')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then Display shows 1')
+    context.state.test_that(context, 'display', '=', 1)
 
 @then(u'Ticket is 1')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: Then Ticket is 1')
+    context.state.test_that(context, 'ticket', '=', 1)
 
 @given(u'Machine is on')
 def step_impl(context):
@@ -63,30 +67,6 @@ def step_impl(context):
 def step_impl(context):
     raise NotImplementedError(u'STEP: When Machine is reset')
 
-#
-# @given(u'Machine is off')
-# def step_impl(context):
-#     declare_variable(context, 'running', 'BOOL', 'FALSE')
-#     declare_variable(context, 'display', 'INT', '0')
-#     context.state.ensure_that('running','=','FALSE')
-#
-#
-# @when(u'Machine is started')
-# def step_impl(context):
-#     # this is the assignment state change
-#     context.state.assign([('running', ':=', 'TRUE')])
-#     context.state.assign([('display', ':=', '1')])
-#
-#
-# @then(u'Machine is on')
-# def step_impl(context):
-#     context.state.test_that(context, 'running', '=', 'TRUE')
-#
-# @then(u'Display should show 1')
-# def step_impl(context):
-#     context.state.test_that(context, 'display', '=', 1)
-#
-#
 # @given(u'Machine is on')
 # def step_impl(context):
 #     context.state.ensure_that('running', '=', 'TRUE')

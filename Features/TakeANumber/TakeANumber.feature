@@ -1,6 +1,7 @@
 Feature: Ticketing
   As a business owner, I want to effectively manage customers waiting to be served in a "first come, first served" manner.
 
+  @wip
   Scenario: Start_Machine
     Given Machine is off
     When  Machine is started
