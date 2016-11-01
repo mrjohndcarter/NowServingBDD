@@ -3,3 +3,4 @@
 *.prob
 *.dot
 *.ps
+output/

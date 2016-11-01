@@ -1,0 +1,10 @@
+# Work to be done
+- Support for Sets
+
+# Gotchas
+- Declare Variables -- currently they're tied to one scenario.  you need to run that scenario.  creates a partial order for scenarios. (can we move that to one of those context-y things?)
+
+# Open Questions
+
+# Bugs
+- fix running in bareshell (not under PyCharm)
