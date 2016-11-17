@@ -1,6 +1,8 @@
 import bhive
 import bhive.integration
 
+from  Implementation import NowServingModel
+
 def before_all(context):
     bhive.integration.before_all(context)
 
@@ -19,7 +21,7 @@ def after_feature(context, feature):
 
 def before_scenario(context, scenario):
     bhive.integration.before_scenario(context, scenario)
-
+    context.domain_model = NowServingModel.TicketingModel()
 
 def after_scenario(context, scenario):
     bhive.integration.after_scenario(context, scenario)

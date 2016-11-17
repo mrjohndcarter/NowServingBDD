@@ -5,7 +5,7 @@ Feature: Ticketing
     Given Machine is off
     When  Machine is started
     Then  Machine is on
-    And   Display shows 1
+    And   Display shows 0
     And   Ticket is 1
 
   Scenario: Stop_Machine
@@ -28,6 +28,6 @@ Feature: Ticketing
   Scenario: Reset_Machine
     Given Machine is on
     When  Machine is reset
-    Then  Display shows 1
+    Then  Display shows 0
     And   Ticket is 1
 
