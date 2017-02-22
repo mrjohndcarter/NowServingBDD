@@ -12,7 +12,7 @@ OPERATIONS
 
   Start_Machine =
   PRE running = FALSE
-  THEN running := TRUE || display := 1
+  THEN running := TRUE || display := 0
   END;
 
   Stop_Machine =
@@ -27,7 +27,7 @@ OPERATIONS
 
   Reset_Machine =
   PRE running = TRUE
-  THEN display := 1 || next_ticket := 1
+  THEN display := 1 || next_ticket := 0
   END;
 
   Serve =
